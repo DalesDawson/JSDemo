@@ -1,0 +1,77 @@
+{
+	"tab-webview-subpage-quanzi.html": {
+		"resources": [
+			"js/mui.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mtkj.css"
+		],
+		"refer": []
+	},
+	"index.html": {
+		"resources": [
+			"tab-webview-subpage-home.html",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"tab-webview-subpage-quanzi.html",
+			"tab-webview-subpage-fsy.html",
+			"tab-webview-subpage-home.html",
+			"tab-webview-subpage-personal.html"
+		]
+	},
+	"tab-webview-subpage-personal.html": {
+		"resources": [
+			"js/mui.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mtkj.css"
+		],
+		"refer": [
+			"html/reg.html",
+			"html/login.html"
+		]
+	},
+	"tab-webview-subpage-home.html": {
+		"resources": [
+			"css/mui.min.css",
+			"css/mtkj.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
+		],
+		"refer": []
+	},
+	"html/reg.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"css/mtkj.css"
+		],
+		"refer": []
+	},
+	"tab-webview-subpage-fsy.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mtkj.css"
+		],
+		"refer": []
+	},
+	"html/login.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mtkj.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/reg.html",
+			"html/forget_password.html"
+		]
+	}
+}
