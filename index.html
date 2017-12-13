@@ -78,14 +78,36 @@
 				var name = document.getElementById("account").value;
 				var pwd = document.getElementById("password").value;
 				//				alert(name + pwd);
-				if(name == "dale" && pwd == "12345") {
-					alert("Welcome!")
+				if(name == localStorage.getItem('name') && pwd == localStorage.getItem('pwd')) {
+					alert("Welcome!");
 				} else {
 					alert("password or username is wrong!!");
 				}
 			}
+
+			function register() {
+				var name = document.getElementById("account").value;
+				var pwd = document.getElementById("password").value;
+				if(name != "" && name != null && pwd != null && pwd != "") {
+					alert("register successfully!!");
+					localStorage.setItem('name', name);
+					localStorage.setItem('pwd', pwd);
+				} else {
+					alert("name or password is null");
+				}
+			}
 		</script>
-		<button id='login' class="mui-btn mui-btn-block mui-btn-primary" onclick="login()">登录</button>
+		<table id="table1">
+			<tr>
+				<td>
+					<button id=' login ' class="mui-btn mui-btn-block mui-btn-primary" onclick="login()" style=" margin-top: 20px ;margin-left:30px;width: 100px;height: 40px;">登录</button>
+				</td>
+				<td>
+					<button id='register' class="mui-btn mui-btn-block mui-btn-primary" onclick="register()" style="margin-top: 20px ;margin-left:30px;width: 100px;height: 40px;">注册</button>
+				</td>
+			</tr>
+		</table>
+
 	</body>
 
 </html>
