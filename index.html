@@ -63,7 +63,8 @@
 			}
 		</script>
 		<button type="button" onclick="myFunction()">点击验证</button>-->
-		<form id='login-form' class="mui-input-group">
+		<p>注册登录Dome</p>
+		<form id='login-form' class="mui-input-group" style="margin-top: 20px;">
 			<div class="mui-input-row">
 				<label>账号</label>
 				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
@@ -78,14 +79,275 @@
 				var name = document.getElementById("account").value;
 				var pwd = document.getElementById("password").value;
 				//				alert(name + pwd);
-				if(name == "dale" && pwd == "12345") {
-					alert("Welcome!")
+				if(name == localStorage.getItem('name') && pwd == localStorage.getItem('pwd')) {
+					alert("Welcome!");
 				} else {
 					alert("password or username is wrong!!");
 				}
 			}
+
+			function register() {
+				var name = document.getElementById("account").value;
+				var pwd = document.getElementById("password").value;
+				if(name != "" && name != null && pwd != null && pwd != "") {
+					alert("register successfully!!");
+					localStorage.setItem('name', name);
+					localStorage.setItem('pwd', pwd);
+				} else {
+					alert("name or password is null");
+				}
+			}
 		</script>
-		<button id='login' class="mui-btn mui-btn-block mui-btn-primary" onclick="login()">登录</button>
+		<table id="table1">
+			<tr>
+				<td>
+					<button id=' login ' class="mui-btn mui-btn-block mui-btn-primary" onclick="login()" style=" margin-top: 20px ;margin-left:30px;width: 100px;height: 40px;line-height: 12px;">登录</button>
+				</td>
+				<td>
+					<button id='register' class="mui-btn mui-btn-block mui-btn-primary" onclick="register()" style="margin-top: 20px ;margin-left:30px;width: 100px;height: 40px;line-height: 12px;">注册</button>
+				</td>
+			</tr>
+		</table>
+
+		<head>
+			<script type="text/javascript">
+				function startTime() {
+					var today = new Date()
+					var h = today.getHours()
+					var m = today.getMinutes()
+					var s = today.getSeconds()
+					// add a zero in front of numbers<10
+					m = checkTime(m)
+					s = checkTime(s)
+					document.getElementById('txt').innerHTML = "current time:" + h + ":" + m + ":" + s
+					t = setTimeout('startTime()', 500) //未来的某时执行代码 此处表示0.5秒执行一次
+				}
+
+				function checkTime(i) {
+					if(i < 10) {
+						i = "0" + i
+					}
+					return i
+				}
+			</script>
+		</head>
+
+		<body onload="startTime()">
+			<div id="txt"></div>
+		</body>
+
+		<head>
+			<script type="text/javascript">
+				function getCookie(c_name) {
+					if(document.cookie.length > 0) {
+						c_start = document.cookie.indexOf(c_name + "=")
+						if(c_start != -1) {
+							c_start = c_start + c_name.length + 1
+							c_end = document.cookie.indexOf(";", c_start)
+							if(c_end == -1) c_end = document.cookie.length
+							return unescape(document.cookie.substring(c_start, c_end))
+						}
+					}
+					return ""
+				}
+
+				function setCookie(c_name, value, expiredays) {
+					var exdate = new Date()
+					exdate.setDate(exdate.getDate() + expiredays)
+					document.cookie = c_name + "=" + escape(value) +
+						((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+				}
+
+				function checkCookie() {
+					username = getCookie('username')
+					if(username != null && username != "") {
+						alert('Welcome again ' + username + '!')
+					} else {
+						username = prompt('Please enter your name:', "")
+						if(username != null && username != "") {
+							setCookie('username', username, 365)
+						}
+					}
+				}
+			</script>
+		</head>
+
+		<body onLoad="checkCookie()">
+		</body>
+		<!--<head>
+			<script type="text/javascript">
+				function timedMsg() {
+					var t = setTimeout("alert('5 秒！')", 5000)
+				}
+			</script>
+		</head>
+
+		<body>
+			<form>
+				<input type="button" value="显示定时的警告框" onClick="timedMsg()">
+			</form>
+			<p>请点击上面的按钮。警告框会在 5 秒后显示。</p>
+		</body>
+
+		<head>
+			<script type="text/javascript">
+				var c = 0
+				var t
+
+				function timedCount() {
+					document.getElementById('txt').value = c
+					c = c + 1
+					t = setTimeout("timedCount()", 1000)
+				}
+			</script>
+		</head>
+
+		<body>
+
+			<form>
+				<input type="button" value="开始计时！" onClick="timedCount()">
+				<input type="text" id="txt">
+			</form>
+
+			<p>请点击上面的按钮。输入框会从 0 开始一直进行计时。</p>
+
+		</body>
+
+		<head>
+			<script type="text/javascript">
+				var c = 0
+				var t
+
+				function timedCount() {
+					document.getElementById('txt').value = c
+					c = c + 1
+					t = setTimeout("timedCount()", 1000)
+				}
+
+				function stopCount() {
+					c = 0;
+					setTimeout("document.getElementById('txt').value=0", 0);
+					clearTimeout(t);
+				}
+			</script>
+		</head>
+
+		<body>
+
+			<form>
+				<input type="button" value="开始计时！" onClick="timedCount()">
+				<input type="text" id="txt">
+				<input type="button" value="停止计时！" onClick="stopCount()">
+			</form>
+
+			<p>请点击上面的“开始计时”按钮来启动计时器。输入框会一直进行计时，从 0 开始。点击“停止计时”按钮可以终止计时，并将计数重置为 0。</p>
+
+		</body>-->
+		<!--<script type="text/javascript">
+			function validate_required(field, alerttxt) {
+				with(field) {
+					if(value == null || value == "") {
+						alert(alerttxt);
+						return false
+					} else {
+						return true
+					}
+				}
+			}
+
+			function validate_form(thisform) {
+				with(thisform) {
+					if(validate_required(email, "Email must be filled out!") == false) {
+						email.focus();
+						return false
+					}
+				}
+			}
+		</script>
+
+		<body>
+			<form action="submitpage.htm" onsubmit="return validate_form(this)" method="post">
+				Email: <input type="text" name="email" size="30">
+				<input type="submit" value="Submit">
+			</form>
+		</body>
+		<script type="text/javascript">
+			function validate_email(field, alerttxt) {
+				with(field) {
+					apos = value.indexOf("@")
+					dotpos = value.lastIndexOf(".")
+					if(apos < 1 || dotpos - apos < 2) {
+						alert(alerttxt);
+						return false
+					} else {
+						return true
+					}
+				}
+			}
+
+			function validate_form(thisform) {
+				with(thisform) {
+					if(validate_email(email, "Not a valid e-mail address!") == false) {
+						email.focus();
+						return false
+					}
+				}
+			}
+		</script>
+
+		<body>
+			<form action="submitpage.htm" onsubmit="return validate_form(this);" method="post">
+				Email: <input type="text" name="email" size="30">
+				<input type="submit" value="Submit">
+			</form>
+		</body>
+		<script>
+			document.write(Math.floor(Math.random() * 11))
+		</script>
+		<script>
+			/**
+			 * 加载新的文档
+			 */
+			function newDoc() {
+				window.location.assign("https://www.baidu.com")
+			}
+		</script>
+		</head>
+
+		<body>
+
+			<input type="button" value="加载新文档" onclick="newDoc()">
+
+		</body>
+		<script>
+			/**
+			 * 在页面上创建后退按钮
+			 */
+			function goBack() {
+				window.history.back()
+			}
+		</script>
+
+		<body>
+
+			<input type="button" value="Back" onclick="goBack()">
+
+		</body>
+		<div id="example"></div>
+
+		<script>
+			txt = "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+			txt += "<p>Browser Name: " + navigator.appName + "</p>";
+			txt += "<p>Browser Version: " + navigator.appVersion + "</p>";
+			txt += "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>";
+			txt += "<p>Platform: " + navigator.platform + "</p>";
+			txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
+			txt += "<p>User-agent language: " + navigator.systemLanguage + "</p>";
+
+			document.getElementById("example").innerHTML = txt;
+			confirm("文本")
+			prompt("文本","默认值")
+		</script>-->
 	</body>
 
 </html>
